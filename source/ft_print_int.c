@@ -6,13 +6,13 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 22:33:57 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/14 20:09:55 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/14 20:15:55 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	ft_print_dec(int nb)
+int	ft_print_int(int nb)
 {
 	char	*nb_str;
 	int		nb_len;
