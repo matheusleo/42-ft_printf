@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 20:52:43 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/13 21:53:07 by mleonard         ###   ########.fr       */
+/*   Created: 2022/06/13 20:58:44 by mleonard          #+#    #+#             */
+/*   Updated: 2022/06/13 21:04:57 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "libft.h"
-# include <unistd.h>
+#include "../includes/ft_printf.h"
 
-// Functions to print the values to the STDOUT
-int	ft_print_char(int c);
-
-#endif
+int	ft_print_char(int c)
+{
+	ft_putchar_fd((unsigned char)c, 1);
+	return (1);
+}
