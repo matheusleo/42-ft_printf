@@ -1,0 +1,10 @@
+# Hidden folders
+.vscode
+
+# Test files
+main.c
+*.txt
+
+# Compiled files
+*.out
+*.a
