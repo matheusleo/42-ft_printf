@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_dec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 20:52:43 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/14 09:50:58 by mleonard         ###   ########.fr       */
+/*   Created: 2022/06/13 22:33:57 by mleonard          #+#    #+#             */
+/*   Updated: 2022/06/14 20:09:55 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "libft.h"
-# include <unistd.h>
-# define STDOUT 1
+#include "../includes/ft_printf.h"
 
-// Functions to print the values to the STDOUT
-int	ft_print_char(int c);
-int	ft_print_str(char *str);
-int	ft_print_dec(int nb);
+int	ft_print_dec(int nb)
+{
+	char	*nb_str;
+	int		nb_len;
 
-#endif
+	nb_str = ft_itoa(nb);
+	if (!*nb_str)
+		return (-1);
+	nb_len = ft_print_str(nb_str);
+	return (nb_len);
+}
