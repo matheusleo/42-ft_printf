@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_uint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 20:52:43 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/14 22:01:49 by mleonard         ###   ########.fr       */
+/*   Created: 2022/06/14 20:30:52 by mleonard          #+#    #+#             */
+/*   Updated: 2022/06/14 22:40:01 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "libft.h"
-# include <unistd.h>
-# define STDOUT 1
+#include "../includes/ft_printf.h"
 
-// Functions to print the values to the STDOUT
-int	ft_print_char(int c);
-int	ft_print_str(char *str);
-int	ft_print_int(int nb);
-int	ft_print_uint(unsigned int nb);
+int	ft_print_uint(unsigned int nb)
+{
+	int				nb_len;
+	unsigned int	quoc;
+	unsigned int	remain;
 
-#endif
+	nb_len = 1;
+	quoc = nb / 10;
+	remain = nb % 10;
+	if (quoc != 0)
+		nb_len += ft_print_uint(quoc);
+	ft_putchar_fd(remain + '0', STDOUT);
+	return (nb_len);
+}
