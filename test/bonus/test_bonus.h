@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:07:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/20 21:54:33 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:54:39 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	ft_print_str(char *str);
 
 // Refactored functions
 int	ft_print_hex(unsigned int nb, int is_upper, int is_alt);
+int	ft_print_int(int nb,  int is_signed, int is_spaced);
 
 #endif
