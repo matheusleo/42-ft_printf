@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 09:28:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/20 22:20:49 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/20 22:22:38 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	test_print_hex(void)
 	int		returned;
 
 	example = "# +dcsdpiuxX";
-	used_flags = flag_parser(example);
+	used_flags = ft_flag_parser(example);
 	set_color();
 	printf("Test #00 - Test flags\n\n");
 	reset_color();
@@ -135,7 +135,7 @@ void	test_print_int(void)
 	int		returned;
 
 	example = "+dcsdpiuxX";
-	used_flags = flag_parser(example);
+	used_flags = ft_flag_parser(example);
 	printf("Original string - %s\n\n", example);
 	set_color();
 	printf("Test #00 - Test flags\n\n");
