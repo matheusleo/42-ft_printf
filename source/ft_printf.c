@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 14:26:44 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/15 20:27:34 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/20 22:17:26 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static int	ft_parse_format_char(char indicator, va_list list)
 	if (indicator == 'u')
 		return (ft_print_uint(va_arg(list, unsigned int)));
 	if (indicator == 'x')
-		return (ft_print_hex(va_arg(list, unsigned int), 0));
+		return (ft_print_hex(va_arg(list, unsigned int), FALSE));
 	if (indicator == 'X')
-		return (ft_print_hex(va_arg(list, unsigned int), 1));
+		return (ft_print_hex(va_arg(list, unsigned int), TRUE));
 	if (indicator == 'p')
 		return (ft_print_ptr(va_arg(list, void *)));
 	return (ft_print_char('%'));
