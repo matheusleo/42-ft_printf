@@ -6,42 +6,129 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 09:28:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/20 09:43:07 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/20 21:57:32 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "test_bonus.h"
 #include <stdio.h>
 
 // bonus
 
-int	main(void)
+// flag parser functions
+char	*is_format_char(char c)
 {
-	char	*word;
+	char	*formats;
 
-	word = "matheus";
-	// c
-	printf("%+c\n", *word);
-	// s
-	printf("%+s\n", word);
-	// p
-	printf("%+p\n", word);
-	// i - positive
-	printf("%+i\n", 42);
-	// u - positive
-	printf("%+u\n", 42);
-	// d - positive
-	printf("%+d\n", 42);
-	// i - negative
-	printf("%+i\n", -42);
-	// u - negative
-	printf("%+u\n", -42);
-	// d - negative
-	printf("%+d\n", -42);
-	// x
-	printf("%+x\n", 42);
-	// X
-	printf("%+X\n", 42);
-	// // %
-	// printf("%+%\n");
+	formats = "cspiduxX";
+	return (ft_strchr(formats, c));
+}
+
+t_flags	flag_parser(char *str_flags)
+{
+	t_flags	flags;
+
+	flags.alt_form = FALSE;
+	flags.spaced_form = FALSE;
+	flags.signed_form = FALSE;
+	while (!is_format_char(*str_flags))
+	{
+		if (*str_flags == '#')
+			flags.alt_form = TRUE;
+		if (*str_flags == ' ')
+			flags.spaced_form = TRUE;
+		if (*str_flags == '+')
+			flags.signed_form = TRUE;
+		str_flags++;
+	}
+	return (flags);
+}
+
+// color functions
+void	set_color(void)
+{
+	printf("\e[0;95m");
+}
+
+void	reset_color(void)
+{
+	printf("\033[0m");
+}
+
+// test functions
+void	test_print_hex(void)
+{
+	char	*example;
+	t_flags	used_flags;
+	int		returned;
+
+	example = "# +dcsdpiuxX";
+	used_flags = flag_parser(example);
+	set_color();
+	printf("Test #00 - Test flags\n\n");
+	reset_color();
+	printf("used_flags.alt_form - %d\n", used_flags.alt_form);
+	printf("used_flags.spaced_form - %d\n", used_flags.spaced_form);
+	printf("used_flags.signed_form - %d\n-------\n", used_flags.signed_form);
+
+	// Function lower hex with flag
+	set_color();
+	printf("Test #01 - Function lower hex with flag\n\n");
+	reset_color();
+	printf("Original printf - ");
+	returned = printf("%#x", 420);
+	printf("\n");
+	printf("Original printf returned - %d\n", returned);
+
+	ft_print_str("My function - ");
+	returned = ft_print_hex(420, FALSE, used_flags.alt_form); // used_flags.alt_form == TRUE, now
+	printf("\n");
+	printf("My function returned - %d\n-------\n", returned);
+
+	// Function upper hex with flag
+	set_color();
+	printf("Test #02 - Function upper hex with flag\n\n");
+	reset_color();
+	printf("Original printf - ");
+	returned = printf("%#X", 420);
+	printf("\n");
+	printf("Original printf returned - %d\n", returned);
+
+	ft_print_str("My function - ");
+	returned = ft_print_hex(420, TRUE, used_flags.alt_form); // used_flags.alt_form == TRUE, now
+	printf("\n");
+	printf("My function returned - %d\n-------\n", returned);
+
+	// Function lower hex without flag
+	set_color();
+	printf("Test #03 - Function lower hex without flag\n\n");
+	reset_color();
+	printf("Original printf - ");
+	returned = printf("%x", 420);
+	printf("\n");
+	printf("Original printf returned - %d\n", returned);
+
+	ft_print_str("My function - ");
+	returned = ft_print_hex(420, FALSE, FALSE);
+	printf("\n");
+	printf("My function returned - %d\n-------\n", returned);
+
+	// Function upper hex without flag
+	set_color();
+	printf("Test #04 - Function upper hex without flag\n\n");
+	reset_color();
+	printf("Original printf - ");
+	returned = printf("%x", 420);
+	printf("\n");
+	printf("Original printf returned - %d\n", returned);
+
+	ft_print_str("My function - ");
+	returned = ft_print_hex(420, TRUE, FALSE);
+	printf("\n");
+	printf("My function returned - %d\n-------\n", returned);
+}
+
+int main(void)
+{
+	test_print_hex();
 }
