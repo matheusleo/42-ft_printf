@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 09:28:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/20 22:12:21 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/20 22:20:49 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*is_format_char(char c)
 	return (ft_strchr(formats, c));
 }
 
-t_flags	flag_parser(char *str_flags)
+t_flags	ft_flag_parser(char *str_flags)
 {
 	t_flags	flags;
 
