@@ -1,3 +1,4 @@
+# Mandatory part
 NAME		:=	libftprintf.a
 INCLUDES	:=	./includes/libft.h \
 				./includes/ft_printf.h
@@ -10,9 +11,19 @@ SOURCE		:=	./source/ft_print_hex.c \
 				./source/ft_print_int.c
 OBJS 		:=	$(SOURCE:.c=.o)
 
-LIBFT		:= libft.a
-FT_PRINTF	:= ft_printf.a
+# Bonus part
+BONUSSOURCE	:=	./bonus/ft_print_hex_bonus.c \
+				./bonus/ft_print_char_bonus.c \
+				./bonus/ft_print_uint_bonus.c \
+				./bonus/ft_printf_bonus.c \
+				./bonus/ft_print_ptr_bonus.c \
+				./bonus/ft_print_str_bonus.c \
+				./bonus/ft_print_int_bonus.c \
+				./bonus/ft_flag_parser_bonus.c
+BONUSOBJS	:= $(BONUSSOURCE:.c=.o)
 
+# General use
+LIBFT		:= libft.a
 CC			:=	cc
 CFLAGS		:=	-Wall -Werror -Wextra
 AR			:=	ar
@@ -23,11 +34,12 @@ $(NAME): 	./libft/$(LIBFT) $(OBJS)
 			$(AR) -rcs ./libft/$(LIBFT) $(OBJS)
 			mv ./libft/$(LIBFT) $(NAME)
 
+bonus:		./libft/$(LIBFT) $(BONUSOBJS)
+			$(AR) -rcs ./libft/$(LIBFT) $(BONUSOBJS)
+			mv ./libft/$(LIBFT) $(NAME)
+
 ./libft/$(LIBFT):
 			make -C libft/
-
-$(FT_PRINTF):	$(OBJS)
-				$(AR) $(ARFLAGS) $(FT_PRINTF) $(OBJS)
 
 %.o:		%.c $(INCLUDES)
 			$(CC) -c $(CFLAGS) -o $@ $<
@@ -35,7 +47,7 @@ $(FT_PRINTF):	$(OBJS)
 all: 		$(NAME)
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJS) $(BONUSOBJS)
 			make -C libft/ clean
 
 fclean:		clean
