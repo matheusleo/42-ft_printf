@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 09:28:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/20 22:22:38 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:53:26 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,6 @@
 #include <stdio.h>
 
 // bonus
-
-// flag parser functions
-char	*is_format_char(char c)
-{
-	char	*formats;
-
-	formats = "cspiduxX";
-	return (ft_strchr(formats, c));
-}
-
-t_flags	ft_flag_parser(char *str_flags)
-{
-	t_flags	flags;
-
-	flags.alt_form = FALSE;
-	flags.spaced_form = FALSE;
-	flags.signed_form = FALSE;
-	while (!is_format_char(*str_flags))
-	{
-		if (*str_flags == '#')
-			flags.alt_form = TRUE;
-		if (*str_flags == ' ')
-			flags.spaced_form = TRUE;
-		if (*str_flags == '+')
-			flags.signed_form = TRUE;
-		str_flags++;
-	}
-	return (flags);
-}
 
 // color functions
 void	set_color(void)
@@ -215,7 +186,73 @@ void	test_print_int(void)
 	printf("My function returned - %d\n-------\n", returned);
 }
 
+void	test_printf(void)
+{
+	char	*example;
+	t_flags	used_flags;
+
+	example = "%#xcsdpiuxX";
+	used_flags = ft_flag_parser(example);
+	printf("Original string - %s\n\n", example);
+	set_color();
+	printf("Test #00 - Test flags\n\n");
+	reset_color();
+	printf("used_flags.alt_form - %d\n", used_flags.alt_form);
+	printf("used_flags.spaced_form - %d\n", used_flags.spaced_form);
+	printf("used_flags.signed_form - %d\n-------\n", used_flags.signed_form);
+
+	set_color();
+	printf("Test #01 - String with %%#x\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf(example, 420);
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf(example, 420);
+	ft_print_str("\n----\n");
+
+	set_color();
+	printf("Test #02 - String with %%+d\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf("%+d", 420);
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf("%+d", 420);
+	ft_print_str("\n----\n");
+
+	set_color();
+	printf("Test #03 - String with %% d\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf("% d", 420);
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf("% d", 420);
+	ft_print_str("\n----\n");
+
+	set_color();
+	printf("Test #04 - String with %%+ d\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf("%+ d", 420);
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf("%+ d", 420);
+	ft_print_str("\n----\n");
+
+	set_color();
+	printf("Test #05 - String with %% +d\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf("% +d", 420);
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf("% +d", 420);
+	ft_print_str("\n----\n");
+}
+
 int main(void)
 {
-	test_print_int();
+	test_printf();
 }

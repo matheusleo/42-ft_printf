@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:07:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/20 21:54:39 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:53:39 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # define STDOUT 1
 # define FALSE 0
 # define TRUE 1
+# include <stdarg.h>
+# include <unistd.h>
 # include "../../includes/libft.h"
 
 typedef struct s_flags
@@ -22,14 +24,18 @@ typedef struct s_flags
 	int	alt_form;
 	int	signed_form;
 	int	spaced_form;
+	int	total_flags;
 }				t_flags;
-
 
 // Unchanged functions
 int	ft_print_str(char *str);
 
 // Refactored functions
+int	ft_printf(const char *format, ...);
 int	ft_print_hex(unsigned int nb, int is_upper, int is_alt);
-int	ft_print_int(int nb,  int is_signed, int is_spaced);
+int	ft_print_int(int nb, int is_signed, int is_spaced);
+
+// Flag parser
+t_flags	ft_flag_parser(const char *str_flags);
 
 #endif
