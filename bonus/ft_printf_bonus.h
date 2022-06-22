@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:52:43 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/21 21:52:33 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/21 22:55:31 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_print_char(int c);
 int		ft_print_str(char *str);
 int		ft_print_ptr(void *ptr);
 int		ft_print_uint(unsigned int nb);
-int		ft_print_int(int nb, int is_signed, int is_spaced);
-int		ft_print_hex(unsigned int nb, int is_upper, int is_alt);
+int		ft_print_int(int nb, t_flags flags);
+int		ft_print_hex(unsigned int nb, int is_upper, t_flags flags);
 
 #endif

@@ -1,7 +1,6 @@
 # Mandatory part
 NAME		:=	libftprintf.a
-INCLUDES	:=	./includes/libft.h \
-				./includes/ft_printf.h
+INCLUDES	:=	-I includes
 SOURCE		:=	./source/ft_print_hex.c \
 				./source/ft_print_char.c \
 				./source/ft_print_uint.c \
@@ -32,16 +31,16 @@ RM			:=	rm -rf
 
 $(NAME): 	./libft/$(LIBFT) $(OBJS)
 			$(AR) -rcs ./libft/$(LIBFT) $(OBJS)
-			mv ./libft/$(LIBFT) $(NAME)
+			cp ./libft/$(LIBFT) .
+			mv $(LIBFT) $(NAME)
 
-bonus:		./libft/$(LIBFT) $(BONUSOBJS)
-			$(AR) -rcs ./libft/$(LIBFT) $(BONUSOBJS)
-			mv ./libft/$(LIBFT) $(NAME)
+bonus:		$(NAME) $(BONUSOBJS)
+			$(AR) -rcs $(NAME) $(BONUSOBJS)
 
 ./libft/$(LIBFT):
 			make -C libft/
 
-%.o:		%.c $(INCLUDES)
+%.o:		%.c
 			$(CC) -c $(CFLAGS) -o $@ $<
 
 all: 		$(NAME)

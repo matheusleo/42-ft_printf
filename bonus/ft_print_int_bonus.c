@@ -6,13 +6,13 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:51 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/21 21:51:45 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/21 22:54:28 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	ft_print_int(int nb, int is_signed, int is_spaced)
+int	ft_print_int(int nb, t_flags flags)
 {
 	char	*nb_str;
 	int		nb_len;
@@ -21,9 +21,9 @@ int	ft_print_int(int nb, int is_signed, int is_spaced)
 	nb_str = ft_itoa(nb);
 	if (!*nb_str)
 		return (-1);
-	if (is_signed && nb > 0)
+	if (flags.signed_form && nb > 0)
 		nb_len += ft_print_str("+");
-	else if (is_spaced && nb > 0)
+	else if (flags.spaced_form && nb > 0)
 		nb_len += ft_print_str(" ");
 	nb_len += ft_print_str(nb_str);
 	free(nb_str);

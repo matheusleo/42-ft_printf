@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:45:32 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/21 21:46:06 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/21 23:10:33 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ static int	ft_parse_format_char(char indicator, va_list list, t_flags flags)
 	if (indicator == 's')
 		return (ft_print_str(va_arg(list, char *)));
 	if (indicator == 'd')
-		return (ft_print_int(va_arg(list, int), flags.signed_form, flags.spaced_form));
+		return (ft_print_int(va_arg(list, int), flags));
 	if (indicator == 'i')
-		return (ft_print_int(va_arg(list, int), flags.signed_form, flags.spaced_form));
+		return (ft_print_int(va_arg(list, int), flags));
 	if (indicator == 'u')
 		return (ft_print_uint(va_arg(list, unsigned int)));
 	if (indicator == 'x')
-		return (ft_print_hex(va_arg(list, unsigned int), FALSE, flags.alt_form));
+		return (ft_print_hex(va_arg(list, unsigned int), FALSE, flags));
 	if (indicator == 'X')
-		return (ft_print_hex(va_arg(list, unsigned int), TRUE, flags.alt_form));
+		return (ft_print_hex(va_arg(list, unsigned int), TRUE, flags));
 	if (indicator == 'p')
 		return (ft_print_ptr(va_arg(list, void *)));
 	return (ft_print_char('%'));
