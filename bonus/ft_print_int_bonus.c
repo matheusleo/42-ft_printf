@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:51 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/22 20:49:35 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/23 09:37:06 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ int	ft_print_int(int nb, t_flags flags)
 	if (!*nb_str)
 		return (-1);
 	if (flags.signed_form && nb >= 0)
-		nb_len += ft_print_str("+");
+		nb_len += u_print_str("+");
 	else if (flags.spaced_form && nb >= 0)
-		nb_len += ft_print_str(" ");
-	nb_len += ft_print_str(nb_str);
+		nb_len += u_print_str(" ");
+	nb_len += u_print_str(nb_str);
 	free(nb_str);
+	if (flags.left_padded - nb_len > 0)
+		nb_len += u_print_padding(' ', flags.left_padded - nb_len);
 	return (nb_len);
 }

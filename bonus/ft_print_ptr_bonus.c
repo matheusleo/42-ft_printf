@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:48 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/21 22:19:49 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/23 09:36:12 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,17 @@ static int	print_unsigned_lint(unsigned long int nb)
 	return (nb_len);
 }
 
-int	ft_print_ptr(void *ptr)
+int	ft_print_ptr(void *ptr, t_flags flags)
 {
 	unsigned long int	addr;
 	int					nb_len;
 
 	addr = (unsigned long int)ptr;
 	if (!ptr)
-		return (ft_print_str("(nil)"));
-	nb_len = ft_print_str("0x");
+		return (ft_print_str("(nil)", flags));
+	nb_len = u_print_str("0x");
 	nb_len += print_unsigned_lint(addr);
+	if (flags.left_padded - nb_len > 0)
+		nb_len += u_print_padding(' ', flags.left_padded - nb_len);
 	return (nb_len);
 }

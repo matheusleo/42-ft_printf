@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:52:43 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/21 22:55:31 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/23 20:36:39 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_flags
 	int	alt_form;
 	int	signed_form;
 	int	spaced_form;
+	int	left_padded;
 	int	total_flags;
 }				t_flags;
 
@@ -35,11 +36,15 @@ int		ft_printf(const char *format, ...);
 t_flags	ft_flag_parser(const char *str_flags);
 
 // Functions to print the values to the STDOUT
-int		ft_print_char(int c);
-int		ft_print_str(char *str);
-int		ft_print_ptr(void *ptr);
-int		ft_print_uint(unsigned int nb);
+int		ft_print_char(int c, t_flags flags);
+int		ft_print_str(char *str, t_flags flags);
+int		ft_print_ptr(void *ptr, t_flags flags);
+int		ft_print_uint(unsigned int nb, t_flags flags);
 int		ft_print_int(int nb, t_flags flags);
 int		ft_print_hex(unsigned int nb, int is_upper, t_flags flags);
+
+// Utils
+int		u_print_padding(char c, int length);
+int		u_print_str(char *str);
 
 #endif
