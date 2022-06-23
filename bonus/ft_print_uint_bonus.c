@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:23 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/22 22:34:41 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/23 20:56:24 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_print_uint(unsigned int nb, t_flags flags)
 	int				nb_len;
 
 	nb_len = print_uint(nb);
-	if (flags.left_padded - nb_len > 0)
-		nb_len += u_print_padding(' ', flags.left_padded - nb_len);
+	if (flags.dash_flag - nb_len > 0)
+		nb_len += u_print_padding(' ', flags.dash_flag - nb_len);
 	return (nb_len);
 }

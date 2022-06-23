@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:57 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/23 20:35:46 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/23 20:56:41 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_print_char(int c, t_flags flags)
 
 	len = 1;
 	ft_putchar_fd((unsigned char)c, STDOUT);
-	if (flags.left_padded - len > 0)
-		len += u_print_padding(' ', flags.left_padded - len);
+	if (flags.dash_flag - len > 0)
+		len += u_print_padding(' ', flags.dash_flag - len);
 	return (len);
 }
