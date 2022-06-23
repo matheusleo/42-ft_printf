@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 09:28:21 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/21 21:53:26 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:55:13 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	reset_color(void)
 }
 
 // test functions
-void	test_print_hex(void)
+/* void	test_print_hex(void)
 {
 	char	*example;
 	t_flags	used_flags;
@@ -98,8 +98,8 @@ void	test_print_hex(void)
 	printf("\n");
 	printf("My function returned - %d\n-------\n", returned);
 }
-
-void	test_print_int(void)
+ */
+/* void	test_print_int(void)
 {
 	char	*example;
 	t_flags	used_flags;
@@ -125,7 +125,7 @@ void	test_print_int(void)
 	printf("Original printf returned - %d\n", returned);
 
 	ft_print_str("My function - ");
-	returned = ft_print_int(420, TRUE, FALSE);
+	returned = ft_print_int(420, used_flags);
 	printf("\n");
 	printf("My function returned - %d\n-------\n", returned);
 
@@ -185,7 +185,7 @@ void	test_print_int(void)
 	printf("\n");
 	printf("My function returned - %d\n-------\n", returned);
 }
-
+ */
 void	test_printf(void)
 {
 	char	*example;
@@ -249,6 +249,56 @@ void	test_printf(void)
 	printf("\n");
 	ft_print_str("My function - ");
 	ft_printf("% +d", 420);
+	ft_print_str("\n----\n");
+
+	set_color();
+	printf("Test #06 - String with %% 1s\n\n");
+	reset_color();
+	printf("Original function - (");
+	printf("% 1s", "");
+	printf(")\n");
+	ft_print_str("My function - (");
+	ft_printf("% 1s", "");
+	ft_print_str(")\n----\n");
+
+	set_color();
+	printf("Test #07 - String with %% s\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf("% s", "caiaffa");
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf("% s", "caiaffa");
+	ft_print_str("\n----\n");
+
+	set_color();
+	printf("Test #08 - String with %%#x\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf("%#x", 420);
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf("%#x", 420);
+	ft_print_str("\n----\n");
+
+	set_color();
+	printf("Test #09 - String with %%#X\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf("%#X", 420);
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf("%#X", 420);
+	ft_print_str("\n----\n");
+
+	set_color();
+	printf("Test #10 - String with %%# +x\n\n");
+	reset_color();
+	printf("Original function - ");
+	printf("%# +x", 420);
+	printf("\n");
+	ft_print_str("My function - ");
+	ft_printf("%# +x", 420);
 	ft_print_str("\n----\n");
 }
 
