@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:07:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/21 21:53:39 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/22 22:11:37 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_flags
 	int	alt_form;
 	int	signed_form;
 	int	spaced_form;
+	int	left_padded;
 	int	total_flags;
 }				t_flags;
 
