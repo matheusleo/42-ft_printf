@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:52:43 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/23 20:56:35 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/24 00:46:01 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_flags
 	int	spaced_form;
 	int	dash_flag;
 	int	zero_flag;
+	int	dot_flag;
+	int	precision;
 	int	total_flags;
 }				t_flags;
 

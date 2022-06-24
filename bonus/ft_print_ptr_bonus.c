@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:48 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/23 21:56:55 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/24 09:34:36 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	ft_print_ptr(void *ptr, t_flags flags)
 		return (ft_print_str("(nil)", flags));
 	u_print_str("0x");
 	nb_len = count_lunsigned_digits(addr);
+	if (flags.dot_flag)
+		nb_len += u_print_padding('0', flags.precision - nb_len + 2);
 	if (flags.zero_flag && !flags.dash_flag)
 		nb_len += u_print_padding('0', flags.zero_flag - nb_len);
 	print_unsigned_lint(addr);
