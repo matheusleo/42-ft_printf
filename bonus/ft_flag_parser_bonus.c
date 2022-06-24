@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 08:52:28 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/23 20:58:00 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/24 00:29:47 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_flags	ft_flag_parser(const char *str_flags)
 	flags.spaced_form = FALSE;
 	flags.signed_form = FALSE;
 	flags.dash_flag = 0;
+	flags.zero_flag= 0;
 	flags.total_flags = 0;
 	while (!is_format_char(*str_flags))
 	{
@@ -52,6 +53,18 @@ t_flags	ft_flag_parser(const char *str_flags)
 			while (!is_format_char(*str_flags) && !is_flag_char(*str_flags))
 			{
 				flags.dash_flag = flags.dash_flag * 10 + (*str_flags - '0');
+				flags.total_flags++;
+				str_flags++;
+			}
+			continue ;
+		}
+		if (*str_flags == '0')
+		{
+			str_flags++;
+			flags.total_flags++;
+			while (!is_format_char(*str_flags) && !is_flag_char(*str_flags))
+			{
+				flags.zero_flag = flags.zero_flag * 10 + (*str_flags - '0');
 				flags.total_flags++;
 				str_flags++;
 			}

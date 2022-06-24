@@ -6,46 +6,62 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:55 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/23 20:56:24 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/24 00:30:13 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static int	print_hex(unsigned int nb, int is_upper, int is_alt)
+static int	count_hex_digits(unsigned int nb)
+{
+	int		len;
+	char	*base;
+	int		base_len;
+
+	len = 0;
+	base = "0123456789abcdef";
+	base_len = ft_strlen(base);
+	if (nb == 0)
+		return (len = 1);
+	while (nb)
+	{
+		nb /= base_len;
+		len++;
+	}
+	return (len);
+}
+
+static void	print_hex(unsigned int nb, int is_upper)
 {
 	char			*base;
-	int				nb_len;
 	unsigned int	quoc;
 	unsigned int	remain;
 
-	nb_len = 1;
 	if (is_upper)
-	{
 		base = "0123456789ABCDEF";
-		if (is_alt && nb != 0)
-			nb_len += u_print_str("0X");
-	}
 	else
-	{
 		base = "0123456789abcdef";
-		if (is_alt && nb != 0)
-			nb_len += u_print_str("0x");
-	}
 	quoc = nb / ft_strlen(base);
 	remain = nb % ft_strlen(base);
 	if (quoc != 0)
-		nb_len += print_hex(quoc, is_upper, (is_alt = 0));
+		print_hex(quoc, is_upper);
 	ft_putchar_fd(base[remain], STDOUT);
-	return (nb_len);
 }
 
 int	ft_print_hex(unsigned int nb, int is_upper, t_flags flags)
 {
 	int	nb_len;
 
-	nb_len = print_hex(nb, is_upper, flags.alt_form);
-	if (flags.dash_flag - nb_len > 0)
+	nb_len = 0;
+	if (flags.alt_form && !is_upper && nb != 0)
+		nb_len += u_print_str("0x");
+	else if (flags.alt_form && is_upper && nb != 0)
+		nb_len += u_print_str("0X");
+	nb_len += count_hex_digits(nb);
+	if (flags.zero_flag && !flags.dash_flag)
+		nb_len += u_print_padding('0', flags.zero_flag - nb_len);
+	print_hex(nb, is_upper);
+	if (flags.dash_flag)
 		nb_len += u_print_padding(' ', flags.dash_flag - nb_len);
 	return (nb_len);
 }

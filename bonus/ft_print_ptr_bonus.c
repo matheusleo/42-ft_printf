@@ -6,11 +6,24 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:48 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/23 20:56:24 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/23 21:56:55 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
+static int	count_lunsigned_digits(unsigned long int nb)
+{
+	int	counter;
+
+	counter = 0;
+	while (nb > 0)
+	{
+		nb /= 10;
+		counter++;
+	}
+	return (counter);
+}
 
 static int	print_unsigned_lint(unsigned long int nb)
 {
@@ -39,9 +52,12 @@ int	ft_print_ptr(void *ptr, t_flags flags)
 	addr = (unsigned long int)ptr;
 	if (!ptr)
 		return (ft_print_str("(nil)", flags));
-	nb_len = u_print_str("0x");
-	nb_len += print_unsigned_lint(addr);
-	if (flags.dash_flag - nb_len > 0)
+	u_print_str("0x");
+	nb_len = count_lunsigned_digits(addr);
+	if (flags.zero_flag && !flags.dash_flag)
+		nb_len += u_print_padding('0', flags.zero_flag - nb_len);
+	print_unsigned_lint(addr);
+	if (flags.dash_flag)
 		nb_len += u_print_padding(' ', flags.dash_flag - nb_len);
 	return (nb_len);
 }
