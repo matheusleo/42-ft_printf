@@ -18,7 +18,8 @@ BONUSSOURCE	:=	./bonus/ft_print_hex_bonus.c \
 				./bonus/ft_print_ptr_bonus.c \
 				./bonus/ft_print_str_bonus.c \
 				./bonus/ft_print_int_bonus.c \
-				./bonus/ft_flag_parser_bonus.c
+				./bonus/ft_flag_parser_bonus.c \
+				./bonus/utils.c
 BONUSOBJS	:= $(BONUSSOURCE:.c=.o)
 
 # General use
@@ -34,8 +35,10 @@ $(NAME): 	./libft/$(LIBFT) $(OBJS)
 			cp ./libft/$(LIBFT) .
 			mv $(LIBFT) $(NAME)
 
-bonus:		$(NAME) $(BONUSOBJS)
-			$(AR) -rcs $(NAME) $(BONUSOBJS)
+bonus:		./libft/$(LIBFT) $(BONUSOBJS)
+			$(AR) -rcs ./libft/$(LIBFT) $(BONUSOBJS)
+			cp ./libft/$(LIBFT) .
+			mv $(LIBFT) $(NAME)
 
 ./libft/$(LIBFT):
 			make -C libft/
