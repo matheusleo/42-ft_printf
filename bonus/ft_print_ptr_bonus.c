@@ -6,23 +6,29 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:48 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/24 09:34:36 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/25 11:23:12 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static int	count_lunsigned_digits(unsigned long int nb)
+static int	count_lhex_digits(unsigned long int nb)
 {
-	int	counter;
+	int		len;
+	char	*base;
+	int		base_len;
 
-	counter = 0;
-	while (nb > 0)
+	len = 1;
+	base = "0123456789abcdef";
+	base_len = ft_strlen(base);
+	if (nb == 0)
+		return (len = 1);
+	while (nb)
 	{
-		nb /= 10;
-		counter++;
+		nb /= base_len;
+		len++;
 	}
-	return (counter);
+	return (len);
 }
 
 static int	print_unsigned_lint(unsigned long int nb)
@@ -31,7 +37,7 @@ static int	print_unsigned_lint(unsigned long int nb)
 	int		base_len;
 	int		nb_len;
 
-	nb_len = 0;
+	nb_len = 1;
 	base = "0123456789abcdef";
 	base_len = ft_strlen(base);
 	if (nb != 0)
@@ -53,7 +59,7 @@ int	ft_print_ptr(void *ptr, t_flags flags)
 	if (!ptr)
 		return (ft_print_str("(nil)", flags));
 	u_print_str("0x");
-	nb_len = count_lunsigned_digits(addr);
+	nb_len = count_lhex_digits(addr) + 1;
 	if (flags.dot_flag)
 		nb_len += u_print_padding('0', flags.precision - nb_len + 2);
 	if (flags.zero_flag && !flags.dash_flag)

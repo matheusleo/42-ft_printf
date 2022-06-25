@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:23 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/24 10:08:56 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/24 14:48:39 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	count_unsigned_digits(unsigned int nb)
 	int	counter;
 
 	counter = 0;
+	if (nb == 0)
+		return (counter = 1);
 	while (nb > 0)
 	{
 		nb /= 10;
