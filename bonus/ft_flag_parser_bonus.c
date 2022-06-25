@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 08:52:28 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/25 13:42:07 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:36:05 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,17 @@ static t_flags	parse_field_width_flags(const char **str_flags, t_flags flags)
 	return (flags);
 }
 
+static t_flags	parse_digits(const char **str_flags, t_flags flags)
+{
+	while (!is_format_char(**str_flags) && !is_flag_char(**str_flags))
+	{
+		flags.field_width = flags.field_width * 10 + **str_flags - '0';
+		flags.total_flags++;
+		(*str_flags)++;
+	}
+	return (flags);
+}
+
 t_flags	ft_flag_parser(const char *str_flags)
 {
 	t_flags	flags;
@@ -74,6 +85,11 @@ t_flags	ft_flag_parser(const char *str_flags)
 		if (ft_strchr("-0.", *str_flags))
 		{
 			flags = parse_field_width_flags(&str_flags, flags);
+			continue ;
+		}
+		if (ft_isdigit(*str_flags))
+		{
+			flags = parse_digits(&str_flags, flags);
 			continue ;
 		}
 		flags.total_flags++;

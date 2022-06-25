@@ -6,13 +6,13 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:44 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/25 13:10:39 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:28:23 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-char	*generate_limited_str(char *str, int max_length)
+static char	*generate_limited_str(char *str, int max_length)
 {
 	char	*limited_str;
 
@@ -31,6 +31,8 @@ int	ft_print_str(char *str, t_flags flags)
 	if (!str)
 		return (ft_print_str("(null)", flags));
 	str_len = ft_strlen(str);
+	if (!str_len && !flags.dash_flag && !flags.dot_flag && flags.field_width)
+		return (u_print_padding(' ', flags.field_width));
 	if (flags.zero_flag && !flags.dash_flag)
 		str_len += u_print_padding(' ', flags.field_width - str_len);
 	u_print_str(str);

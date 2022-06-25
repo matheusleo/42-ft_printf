@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 22:13:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/25 13:32:42 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:43:03 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ char	*is_flag_char(char c)
 {
 	char	*flags;
 
-	flags = "# +";
+	flags = "# +-.";
 	return (ft_strchr(flags, c));
 }
-
 
 int	u_print_padding(char c, int length)
 {
