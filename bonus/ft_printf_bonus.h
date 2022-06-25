@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 20:52:43 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/24 00:46:01 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:33:05 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_flags
 	int	dash_flag;
 	int	zero_flag;
 	int	dot_flag;
-	int	precision;
+	int	field_width;
 	int	total_flags;
 }				t_flags;
 
@@ -49,5 +49,7 @@ int		ft_print_hex(unsigned int nb, int is_upper, t_flags flags);
 // Utils
 int		u_print_padding(char c, int length);
 int		u_print_str(char *str);
+char	*is_format_char(char c);
+char	*is_flag_char(char c);
 
 #endif

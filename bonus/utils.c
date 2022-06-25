@@ -6,11 +6,28 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 22:13:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/23 09:28:09 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:32:42 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
+char	*is_format_char(char c)
+{
+	char	*formats;
+
+	formats = "cspiduxX";
+	return (ft_strchr(formats, c));
+}
+
+char	*is_flag_char(char c)
+{
+	char	*flags;
+
+	flags = "# +";
+	return (ft_strchr(flags, c));
+}
+
 
 int	u_print_padding(char c, int length)
 {

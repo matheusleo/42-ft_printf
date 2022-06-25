@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:55 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/24 09:30:14 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:10:23 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int	ft_print_hex(unsigned int nb, int is_upper, t_flags flags)
 		nb_len += u_print_str("0X");
 	nb_len += count_hex_digits(nb);
 	if (flags.dot_flag)
-		nb_len += u_print_padding('0', flags.precision - nb_len);
+		nb_len += u_print_padding('0', flags.field_width - nb_len);
 	else if (flags.zero_flag && !flags.dash_flag)
-		nb_len += u_print_padding('0', flags.zero_flag - nb_len);
+		nb_len += u_print_padding('0', flags.field_width - nb_len);
 	print_hex(nb, is_upper);
 	if (flags.dash_flag)
-		nb_len += u_print_padding(' ', flags.dash_flag - nb_len);
+		nb_len += u_print_padding(' ', flags.field_width - nb_len);
 	return (nb_len);
 }
