@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 22:13:08 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/25 16:43:03 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/26 10:41:46 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*is_format_char(char c)
 {
 	char	*formats;
 
-	formats = "cspiduxX";
+	formats = "cspiduxX%";
 	return (ft_strchr(formats, c));
 }
 

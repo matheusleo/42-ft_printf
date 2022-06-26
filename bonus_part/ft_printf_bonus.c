@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:45:32 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/23 20:36:24 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/26 10:42:03 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_parse_format_char(char indicator, va_list list, t_flags flags)
 		return (ft_print_hex(va_arg(list, unsigned int), TRUE, flags));
 	if (indicator == 'p')
 		return (ft_print_ptr(va_arg(list, void *), flags));
-	return (ft_print_char('%', flags));
+	return (u_print_str("%"));
 }
 
 int	ft_printf(const char *format, ...)

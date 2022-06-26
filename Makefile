@@ -9,19 +9,15 @@ SOURCE		:=	./source/ft_print_hex.c \
 				./source/ft_print_str.c \
 				./source/ft_print_int.c
 OBJS 		:=	$(SOURCE:.c=.o)
+HEADER		:=	./includes/ft_printf.h
 
 # Bonus part
 BONUSNAME	:=	$(NAME:.a=_bonus.a)
-BONUSSOURCE	:=	./bonus_part/ft_print_hex_bonus.c \
-				./bonus_part/ft_print_char_bonus.c \
-				./bonus_part/ft_print_uint_bonus.c \
-				./bonus_part/ft_printf_bonus.c \
-				./bonus_part/ft_print_ptr_bonus.c \
-				./bonus_part/ft_print_str_bonus.c \
-				./bonus_part/ft_print_int_bonus.c \
+BONUSSOURCE	:=	$(SOURCE:./source/%.c=./bonus_part/%_bonus.c) \
 				./bonus_part/ft_flag_parser_bonus.c \
 				./bonus_part/utils.c
-BONUSOBJS	:= $(BONUSSOURCE:.c=.o)
+BONUSOBJS	:=	$(BONUSSOURCE:.c=.o)
+BONUSHEADER	:=	./bonus_part/ft_printf_bonus.h
 
 # General use
 LIBFT		:= libft.a
@@ -31,12 +27,12 @@ AR			:=	ar
 ARFLAGS		:=	-rcs
 RM			:=	rm -rf
 
-$(NAME):	./libft/$(LIBFT) $(OBJS)
+$(NAME):	./libft/$(LIBFT) $(OBJS) $(HEADER)
 			cp ./libft/$(LIBFT) .
 			$(AR) -rcs $(LIBFT) $(OBJS)
 			cp $(LIBFT) $(NAME)
 
-$(BONUSNAME):	./libft/$(LIBFT) $(BONUSOBJS)
+$(BONUSNAME):	./libft/$(LIBFT) $(BONUSOBJS) $(BONUSHEADER)
 				cp ./libft/$(LIBFT) $(BONUSNAME)
 				$(AR) -rcs $(BONUSNAME) $(BONUSOBJS)
 				cp $(BONUSNAME) $(NAME)
@@ -44,7 +40,7 @@ $(BONUSNAME):	./libft/$(LIBFT) $(BONUSOBJS)
 ./libft/$(LIBFT):
 					make -C libft/
 
-%.o:		%.c $(INCLUDES)
+%.o:		%.c
 			$(CC) -c $(CFLAGS) -o $@ $<
 
 all: 		$(NAME)
