@@ -15,7 +15,7 @@ HEADER		:=	./includes/ft_printf.h
 BONUSNAME	:=	$(NAME:.a=_bonus.a)
 BONUSSOURCE	:=	$(SOURCE:./source/%.c=./bonus_part/%_bonus.c) \
 				./bonus_part/ft_flag_parser_bonus.c \
-				./bonus_part/utils.c
+				./bonus_part/utils_bonus.c
 BONUSOBJS	:=	$(BONUSSOURCE:.c=.o)
 BONUSHEADER	:=	./bonus_part/ft_printf_bonus.h
 
