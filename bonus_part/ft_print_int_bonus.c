@@ -6,7 +6,7 @@
 /*   By: mleonard <mleonard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 21:48:51 by mleonard          #+#    #+#             */
-/*   Updated: 2022/06/25 15:46:19 by mleonard         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:53:08 by mleonard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	ft_print_int(int nb, t_flags flags)
 	nb_str = ft_itoa(nb);
 	if (!*nb_str)
 		return (-1);
-	nb_len = print_sign_flags(nb, flags);
-	nb_len += ft_strlen(nb_str);
+	print_sign_flags(nb, flags);
+	nb_len = ft_strlen(nb_str);
 	if (nb < 0)
 	{
 		u_print_str("-");
@@ -57,5 +57,7 @@ int	ft_print_int(int nb, t_flags flags)
 		free(nb_str);
 	if (flags.dash_flag)
 		nb_len += u_print_padding(' ', flags.field_width - nb_len);
+	if ((flags.signed_form || flags.spaced_form) && nb >= 0)
+		nb_len++;
 	return (nb_len);
 }
