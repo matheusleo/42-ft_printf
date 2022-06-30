@@ -40,7 +40,7 @@ A parte bônus consiste em um super set da parte mandatória que aceita as segui
 - '0'
 - field width
 
-### Execução
+## Execução
 
 Para utilizar a função ``ft_printf``, basta executar um dos comandos anteriores e compilar uma função principal que utilize a função
 
