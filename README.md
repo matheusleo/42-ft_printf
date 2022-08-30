@@ -9,7 +9,7 @@ O objetivo do projeto é replicar a popular função **printf** da ``<stdlib.h>`
 Para compilar a parte mandatória do projeto, basta executar o seguinte comando na root do projeto:
 
 ```
-	make
+make
 ```
 A parte mandatória consistia em implementar um modelo funcional da printf para os identificadores:
 
@@ -45,5 +45,5 @@ A parte bônus consiste em um super set da parte mandatória que aceita as segui
 Para utilizar a função ``ft_printf``, basta executar um dos comandos anteriores e compilar uma função principal que utilize a função
 
 ```
-	<COMPILADOR> -Wall -Wextra -Werror <FILE> libftprintf.a -I includes
+<COMPILADOR> -Wall -Wextra -Werror <FILE> libftprintf.a -I includes
 ```
